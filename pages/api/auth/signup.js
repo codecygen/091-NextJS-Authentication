@@ -1,6 +1,11 @@
 import connectDatabase from "../../../lib/db";
+import { hashPassword } from "../../../lib/auth";
 
 const userCreationHandler = async (req, res) => {
+    if (req.method !== 'POST') {
+        return;
+    }
+
     const data = req.body;
 
     const { email, password } = data;
@@ -19,12 +24,16 @@ const userCreationHandler = async (req, res) => {
 
     const db = client.db();
 
+    const hashedPassword = hashPassword();
+
     const usersCollection = db.collection('users');
 
-    await usersCollection.insertOne({
+    const result = await usersCollection.insertOne({
         email,
-        data
+        password: hashedPassword
     });
+
+    res.status(201).json({ message: 'Created new user!' });
 };
 
 export default userCreationHandler;
