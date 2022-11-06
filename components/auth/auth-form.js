@@ -1,32 +1,33 @@
 import { useState, useRef } from 'react';
 import classes from './auth-form.module.css';
 
-async function createUser(email, password) {
-  const response = await fetch('/api/auth/signup.js', {
-    method: 'POST',
-    body: JSON.stringify({
-      email,
-      password
-    }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
-
-  const data = await response.json();
-
-  if (!response.ok) {
-    throw new Error(data.message || 'Something went wrong!');
-  }
-
-  return data;
-}
 
 function AuthForm() {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
   const [isLogin, setIsLogin] = useState(true);
+
+  async function createUser(email, password) {
+    const response = await fetch('/api/auth/signup', {
+      method: 'POST',
+      body: JSON.stringify({
+        email,
+        password
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  
+    const data = await response.json();
+  
+    if (!response.ok) {
+      throw new Error(data.message || 'Something went wrong!');
+    }
+  
+    return data;
+  }
 
   function switchAuthModeHandler() {
     setIsLogin((prevState) => !prevState);
@@ -46,8 +47,8 @@ function AuthForm() {
       try {
         const result = await createUser(enteredEmail, enteredPassword);
         console.log(result);
-      } catch (e) {
-        console.log(e);
+      } catch (error) {
+        console.log(error.message);
       }
     }
   }

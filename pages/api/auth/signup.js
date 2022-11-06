@@ -24,7 +24,7 @@ const userCreationHandler = async (req, res) => {
 
     const db = client.db();
 
-    const hashedPassword = hashPassword();
+    const hashedPassword = await hashPassword(password);
 
     const usersCollection = db.collection('users');
 
