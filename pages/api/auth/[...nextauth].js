@@ -1,5 +1,4 @@
 import NextAuth from 'next-auth';
-// import Providers from 'next-auth/providers';
 import CredentialsProvider from "next-auth/providers/credentials";
 
 import connectDatabase from '../../../lib/db';
@@ -8,7 +7,6 @@ import { verifyPassword } from '../../../lib/auth';
 
 export default NextAuth({
     providers: [
-        // Providers.Credentials({
         CredentialsProvider({
             session: {
                 jwt: true // JSON Web Tokens are used
