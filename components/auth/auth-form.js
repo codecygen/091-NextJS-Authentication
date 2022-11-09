@@ -1,4 +1,6 @@
 import { useState, useRef } from 'react';
+import { signIn } from 'next-auth/client';
+
 import classes from './auth-form.module.css';
 
 
@@ -39,10 +41,23 @@ function AuthForm() {
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
 
+    //==========
     // Add validation for email and password to prevent for front end.
+    //==========
 
     if (isLogin) {
-      // log user in
+      // Written as 'credentials' as in "./pages/api/auth/[...nextauth].js"
+      // authorize method has an argument with the same name which is
+      // 'crendentials'. From there, email and password are accessed with
+      // credentials.email and credentials.password so we have to specify
+      // all of them on the front end.
+      const result = await signIn('credentials', {
+        redirect: false, 
+        email: enteredEmail, 
+        password: enteredPassword
+      });
+
+      console.log(result);
     } else {
       try {
         const result = await createUser(enteredEmail, enteredPassword);
