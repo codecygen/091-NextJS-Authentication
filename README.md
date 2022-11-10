@@ -8,6 +8,7 @@
 ### Front End - Sign in
 - **./components/auth/auth-form.js** is the front end of the app. This component file uses "next-auth" client library to sign the user in.
 - Once login happens sessions has to be kept in the form of JWT. This is accomplished by using **./components/layout/main-navigation.js** file. This component is used in **./components/layout/layout.js** so the navigation section is pretty much the fixed compoenent in every page. We will use the **useSesssion** hook of the "next-auth/client" library.
+- In order useSession hook to work, we need to wrap **./pages/_app.js** file with **SessionProvider**  'next-auth/react' component.
 
 ## Back End
 ### Back End - Sign Up
