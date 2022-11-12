@@ -11,7 +11,7 @@ function MainNavigation() {
   const { data: session, status } = useSession();
 
   // Status tells us if we are authenticated
-  console.log(status);
+  // console.log(status);
   // log 1: unauthenticated
   // log 2: loading
   // log 3: loading
@@ -19,7 +19,7 @@ function MainNavigation() {
 
   // session tells us the lifetime of the cookie created
   // also the user id.
-  console.log(session);
+  // console.log(session);
   // log 1: null
   // log 2: undefined
   // log 3: {user: {…}, expires: '2022-12-12T05:23:35.321Z'}
