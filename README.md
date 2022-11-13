@@ -3,7 +3,7 @@
 - **bcrypt** package is used for this project for encryption of passwords.
 
 # How it Works - Next-Auth
-I am using V4 for this project.
+I am using **next-auth**, v4 for this project.
 
 ## Front End
 ### Front End - Sign in
