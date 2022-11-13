@@ -13,10 +13,15 @@ function ProfilePage() {
   }
   
   if (status === 'unauthenticated') {
-    router.push('/auth');
+    router.replace('/auth');
   }
 
-  return <UserProfile />;
+  return (
+    <>
+      <h1>Profile 1</h1>
+      <UserProfile />
+    </>
+  );
 }
 
 export default ProfilePage;
