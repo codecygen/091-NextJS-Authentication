@@ -2,15 +2,17 @@
 - **next-auth** package is used for this project for authentication.
 - **bcrypt** package is used for this project for encryption of passwords.
 
-# How it Works
+# How it Works - Next-Auth
+I am using V4 for this project.
 
 ## Front End
 ### Front End - Sign in
-- **./components/auth/auth-form.js** is the front end of the app. This component file uses "next-auth" client library to sign the user in.
-- Once login happens sessions has to be kept in the form of JWT. This is accomplished by using **./components/layout/main-navigation.js** file. This component is used in **./components/layout/layout.js** so the navigation section is pretty much the fixed compoenent in every page. We will use the **useSesssion** hook of the "next-auth/client" library. **useSesssion** will control **const { data: session, status } = useSession();** session data which then can be used to render various links such as "Login", "Profile" and "Logout" buttons in the same page.
-- In order to render individual pages, for example **./pages/profile.js**, we can use **const { data: session, status } = useSession();** on that page to render whether we have or don't have the session token.
-- In order useSession hook to work, we need to wrap **./pages/_app.js** file with **SessionProvider**  'next-auth/react' component.
-- Signout functionality is also controlled by **./components/layout/main-navigation.js** file.
+- **Signing in:** **./components/auth/auth-form.js** is the front end of the app. This component file uses "next-auth" client library to sign the user in.
+- **Enable Using useSession Hook:** In order useSession hook to work, we need to wrap **./pages/_app.js** file with **SessionProvider**  'next-auth/react' component. This will be useful for the upcoming sections.
+- **Not Rendering Links If Unauthenticated:** Once login happens sessions has to be kept in the form of JWT. This is accomplished by using **./components/layout/main-navigation.js** file. This component is used in **./components/layout/layout.js** so the navigation section is pretty much the fixed component in every page. We will use the **useSesssion** hook of the "next-auth/client" library. **useSesssion** will control **const { data: session, status } = useSession();** session data which then can be used to render various links such as "Login", "Profile" and "Logout" buttons in the same page.
+- **Client Side Declining Access to Pages:** In order to authenticate access to individual pages, for example **./pages/profile.js**, we can use **const { data: session, status } = useSession();** on that page to render whether we have or don't have the session token. We have to also do this to prevent people to type manually to access the link.
+- **Server Side Declining Access to Pages:** Page **./pages/profile2.js** is used for this example.
+- **Signing Out:** Signout functionality is also controlled by **./components/layout/main-navigation.js** file.
 
 ## Back End
 ### Back End - Sign Up

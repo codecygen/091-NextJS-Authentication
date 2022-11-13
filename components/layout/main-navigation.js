@@ -25,7 +25,7 @@ function MainNavigation() {
   // log 3: {user: {…}, expires: '2022-12-12T05:23:35.321Z'}
   // log 4: {user: {…}, expires: '2022-12-12T05:23:35.321Z'}
 
-  function logoutHandler () {
+  function logoutHandler() {
     // signOut deletes the session token
     signOut();
   };
@@ -51,6 +51,13 @@ function MainNavigation() {
             session &&
             <li>
               <Link href='/profile'>Profile</Link>
+            </li>
+          }
+
+          {
+            session &&
+            <li>
+              <Link href='/profile2'>Profile 2</Link>
             </li>
           }
 
