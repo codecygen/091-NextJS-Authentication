@@ -18,7 +18,7 @@ I am using **next-auth**, v4 for this project.
 ## Back End
 ### Back End - Sign Up
 - **./pages/api/auth/signup.js** checks the validity of the credentials to sign up. If the username and password are valid, requests connection to the database and save it to database. It uses **./lib/db.js** for database connection and **./lib/auth.js** for password hashing and it uses "bcrypt" library.
-- **./pages/api/auth/signup.js** will also have **./pages/api/auth/[...nextauth].js**. This file is used to check if the user that you are currently signing up is already registered in the database thus it will act as a mediator (a configuration file) to sign the user in. It uses "next-auth" library.
+- **./pages/api/auth/[...nextauth].js**. This file is used to check if the signing in user typed the correct email and password. It is connected to **./components/auth/auth-form.js**. signIn method in the front end directly connects to the [...nextauth].js because both front end and back end uses "credentials" as a parameter to access both credentials.email and credentials.password on the backend.
 
 ### Back End - Sign in
 - **./lib/auth.js** file's "verifyPassword" function is used in **./pages/api/auth/[...nextauth].js**.
