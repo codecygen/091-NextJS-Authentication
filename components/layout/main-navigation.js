@@ -50,7 +50,7 @@ function MainNavigation() {
           {
             session &&
             <li>
-              <Link href='/profile'>Profile</Link>
+              <Link href='/password'>Password</Link>
             </li>
           }
 
