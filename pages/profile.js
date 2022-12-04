@@ -1,20 +1,8 @@
-import { useRouter } from 'next/router';
-
-import { useSession } from 'next-auth/react';
+import { getSession } from 'next-auth/react';
 
 import UserProfile from '../components/profile/user-profile';
 
-function ProfilePage() {
-  const router = useRouter();
-  const { data: session, status } = useSession();
-
-  if (status === 'loading') {
-    return <p>Loading...</p>
-  }
-  
-  if (status === 'unauthenticated') {
-    router.replace('/auth');
-  }
+function ProfilePage2() {
 
   return (
     <>
@@ -23,4 +11,24 @@ function ProfilePage() {
   );
 }
 
-export default ProfilePage;
+export async function getServerSideProps(context) {
+  const session = await getSession({ req: context.req });
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/auth',
+        // Permanent false means only this time redirect
+        permanent: false
+      }
+    };
+  }
+
+  return {
+    props: {
+      session
+    }
+  };
+};
+
+export default ProfilePage2;
