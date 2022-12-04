@@ -57,7 +57,7 @@ function MainNavigation() {
           {
             session &&
             <li>
-              <Link href='/profile2'>Profile 2</Link>
+              <Link href='/user-info'>User Info</Link>
             </li>
           }
 

@@ -1,14 +1,14 @@
 import { getSession } from 'next-auth/react';
 
-import UserProfile from '../components/profile/user-profile';
+import classes from './user-info.module.css';
 
 function ProfilePage2() {
 
   return (
-    <>
-      <h1>Profile 2</h1>
-      <UserProfile />
-    </>
+    <div className={classes.center}>
+      <h1>This page is for user info!</h1>
+      <h2>Person Name: My Name</h2>
+    </div>
   );
 }
 
