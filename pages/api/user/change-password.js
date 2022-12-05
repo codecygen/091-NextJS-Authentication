@@ -14,8 +14,13 @@ const passwordChangeHandler = async (req, res) => {
         return;
     }
 
-    // This gets info from session cookie.
+    // session.user.email is taken from
+    // /api/auth/[...nextauth].js
+    // Inside it last section is like
+    // return { email: foundUser.email };
+    // Here, email is access with session.user.email
     const userEmail = session.user.email;
+
     const enteredOldPassword = req.body.oldPassword;
     const enteredNewPassword = req.body.newPassword;
 

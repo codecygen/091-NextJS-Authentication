@@ -6,25 +6,30 @@ import connectDatabase from '../../../lib/db';
 import { verifyPassword } from '../../../lib/auth';
 
 export default NextAuth({
+    session: {
+        jwt: true // JSON Web Tokens are used
+    },
+
     providers: [
         CredentialsProvider({
-            session: {
-                jwt: true // JSON Web Tokens are used
-            },
-
             async authorize(credentials) {
                 const client = await connectDatabase();
                 const db = client.db();
 
                 const usersCollection = db.collection('users');
-                const foundUser = await usersCollection.findOne({ email: credentials.email });
+                const foundUser = await usersCollection.findOne({ 
+                    email: credentials.email 
+                });
 
                 if (!foundUser) {
                     client.close();
                     throw new Error('No user found!');
                 }
 
-                const isPasswordValid = await verifyPassword(credentials.password, foundUser.password);
+                const isPasswordValid = await verifyPassword(
+                    credentials.password, 
+                    foundUser.password
+                );
 
                 if (!isPasswordValid) {
                     client.close();
@@ -32,7 +37,6 @@ export default NextAuth({
                 }
 
                 client.close();
-
                 return { email: foundUser.email };
             }
         })
