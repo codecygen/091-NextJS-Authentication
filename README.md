@@ -2,6 +2,18 @@
 - **next-auth** package is used for this project for authentication.
 - **bcrypt** package is used for this project for encryption of passwords.
 
+# Environmental Variable:
+This environmental variable has to be set for authentication.
+
+Options
+Environment Variables
+NEXTAUTH_URL
+When deploying to production, set the NEXTAUTH_URL environment variable to the canonical URL of your site.
+
+NEXTAUTH_URL=https://example.com
+
+If your Next.js application uses a custom base path, specify the route to the API endpoint in full. More information about the usage of custom base path here.
+
 # How it Works - Next-Auth
 I am using **next-auth**, v4 for this project.
 
