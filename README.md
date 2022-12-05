@@ -14,6 +14,7 @@ I am using **next-auth**, v4 for this project.
 - **Server Side Declining Access to Pages (getServerSideProps):** Page **./pages/password.js** is used for this example.
 - **Declining Access to Auth Form if Signed In:** Check **./pages/auth.js** for detail.
 - **Signing Out:** Signout functionality is also controlled by **./components/layout/main-navigation.js** file.
+- **Password Changing:** The **./components/profile/profile-form.js** is the file that we can change password. The entered password then hoisted to **./components/profile/user-profile.js**.
 
 ## Back End
 ### Back End - Sign Up
