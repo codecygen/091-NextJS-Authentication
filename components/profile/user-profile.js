@@ -4,8 +4,7 @@ import classes from './user-profile.module.css';
 function UserProfile() {
 
   async function changePasswordHandler(passwordData) {
-    console.log(passwordData);
-    
+
     const response = await fetch('/api/user/change-password', {
       method: 'PATCH',
       body: JSON.stringify(passwordData), 
@@ -15,7 +14,6 @@ function UserProfile() {
     });
 
     const data = await response.json();
-    console.log(data);
   }
 
   return (

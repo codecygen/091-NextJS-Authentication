@@ -3,7 +3,6 @@ import { hashPassword, verifyPassword } from '../../../lib/auth';
 import connectDatabase from '../../../lib/db';
 
 const passwordChangeHandler = async (req, res) => {
-    console.log('hi');
     if (req.method !== 'PATCH') {
         return;
     }
@@ -42,7 +41,7 @@ const passwordChangeHandler = async (req, res) => {
 
     const hashOfEnteredNewPassword = await hashPassword(enteredNewPassword);
 
-    const result = usersCollection.updateOne(
+    const result = await usersCollection.updateOne(
         { email: userEmail }, 
         { $set: { password: hashOfEnteredNewPassword } }
     );
