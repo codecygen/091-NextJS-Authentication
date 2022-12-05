@@ -3,6 +3,7 @@ import { hashPassword, verifyPassword } from '../../../lib/auth';
 import connectDatabase from '../../../lib/db';
 
 const passwordChangeHandler = async (req, res) => {
+    console.log('hi');
     if (req.method !== 'PATCH') {
         return;
     }
@@ -14,7 +15,7 @@ const passwordChangeHandler = async (req, res) => {
         return;
     }
 
-    const userEmail = session.foundUser.email;
+    const userEmail = session.user.email;
     const enteredOldPassword = req.body.oldPassword;
     const enteredNewPassword = req.body.newPassword;
 
