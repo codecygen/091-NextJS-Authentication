@@ -14,6 +14,7 @@ const passwordChangeHandler = async (req, res) => {
         return;
     }
 
+    // This gets info from session cookie.
     const userEmail = session.user.email;
     const enteredOldPassword = req.body.oldPassword;
     const enteredNewPassword = req.body.newPassword;
