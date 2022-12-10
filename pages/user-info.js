@@ -16,14 +16,16 @@ function ProfilePage() {
     router.replace('/auth');
   }
 
-  return (
-    <>
-      <div className={classes.center}>
-        <h1>This page is for user info!</h1>
-        <h2>Person Name: My Name</h2>
-      </div>
-    </>
-  );
+  if (status === 'authenticated') {
+    return (
+      <>
+        <div className={classes.center}>
+          <h1>This page is for user info!</h1>
+          <h2>Person Name: My Name</h2>
+        </div>
+      </>
+    );
+  }
 }
 
 export default ProfilePage;
