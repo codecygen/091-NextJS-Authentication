@@ -8,15 +8,7 @@ function ProfilePage() {
   const router = useRouter();
   const { data: session, status } = useSession();
 
-  if (status === 'loading') {
-    return <p>Loading...</p>
-  }
-
-  if (status === 'unauthenticated') {
-    router.replace('/auth');
-  }
-
-  if (status === 'authenticated') {
+  if (status === "authenticated") {
     return (
       <>
         <div className={classes.center}>
@@ -26,6 +18,12 @@ function ProfilePage() {
       </>
     );
   }
+
+  if (status === 'unauthenticated') {
+    router.replace('/auth');
+  }
+
+  return <p>Loading</p>
 }
 
 export default ProfilePage;
